@@ -3,17 +3,25 @@ plugins {
 }
 
 // TODO: uncomment to be able to fetch packages in your own repository
-//repositories {
-//    mavenCentral()
-//    maven {
-//        name = "GitHubPackages"
-//        url = uri("https://maven.pkg.github.com/<your-username>/printscript")
-//        credentials {
-//            username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-//            password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
-//        }
-//    }
-//}
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/CatalinaMendizabal/PrintScript")
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+            password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+        }
+    }
+    maven {
+        url = uri("https://maven.pkg.github.com/austral-ingsis/printscript-parser-common")
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+            password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+        }
+    }
+}
 
 java {
     toolchain {
@@ -22,7 +30,8 @@ java {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.2'
+    implementation 'com.g3.austral.ingsis.printscript:cli:1.2.0'
 }
 
 test {
