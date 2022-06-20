@@ -22,5 +22,5 @@ jobs:
         run: ./gradlew clean
       - name: Build with Gradle
         env:
-          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_ACTOR: CatalinaMendizabal
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
