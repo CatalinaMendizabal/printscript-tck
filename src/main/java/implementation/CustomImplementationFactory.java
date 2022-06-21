@@ -58,6 +58,7 @@ public class CustomImplementationFactory implements InterpreterFactory {
                 }
             } catch (Throwable e) {
                 handler.reportError(e.getMessage());
+
             }
         };
     }
